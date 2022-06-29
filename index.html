@@ -9,10 +9,18 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="library">
-        
+    <div class="libraryWrapper">
+        <div class="library">
+            <div class="libraryHeader">
+                <p>Entry</p>
+                <p class="title">Title</p>
+                <p class="author">Author</p>
+                <p>Pages</p>
+                <p class="progress">Progress</p>
+            </div>
+        </div>
     </div>
-    <button>+</button>
+    <button class="formPopup">+</button>
     <form action="#" onsubmit="addBookToLibrary();return false" id="newBook">
         <legend>Add a new book</legend>
         <label for="title">Title</label>

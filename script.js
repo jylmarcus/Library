@@ -20,6 +20,7 @@ function renderBook(object){
     const author = document.createElement('p');
     const pages = document.createElement('p');
     const read = document.createElement('p');
+    const library = document.getElementsByClassName('library');
     book.setAttribute('class', 'book');
     title.setAttribute('class', 'title');
     author.setAttribute('class', 'author');
@@ -43,7 +44,7 @@ function renderBook(object){
     book.appendChild(author);
     book.appendChild(pages);
     book.appendChild(read);
-    libraryWrapper.appendChild(book);
+    library.appendChild(book);
 }
 
 function addBookToLibrary() {
