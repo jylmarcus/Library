@@ -11,8 +11,14 @@ body{
 .formPopup{
     position: absolute;
     font-size: 24px;
-    bottom: 3vh;
-    right: 3vh;
+    bottom: 5vh;
+    right: 5vh;
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+    border: none;
+    background-color: #2abb73;
+    cursor: pointer;
 }
 
 .libraryWrapper{
@@ -52,6 +58,26 @@ body{
     flex: 2;
 }
 
+.book{
+    display: flex;
+    justify-content: space-between;
+    color: 92,114,138;
+}
+
+.book>p{
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+.book>.title, .libraryHeader>.author{
+    flex: 4;
+}
+
+.book>.progress{
+    flex: 2;
+}
+
 #newBook{
-    visibility: hidden;
+    
 }

@@ -20,22 +20,24 @@
             </div>
         </div>
     </div>
-    <button class="formPopup">+</button>
-    <form action="#" onsubmit="addBookToLibrary();return false" id="newBook">
-        <legend>Add a new book</legend>
-        <label for="title">Title</label>
-        <input type="text" id="title" name="title">
-        <label for="author">Author</label>
-        <input type="text" id="author" name="author">
-        <label for="pages">Number of Pages</label>
-        <input type="number" id="pages" name="pages">
-        <label for="read">Status</label>
-        <select name="read" id="read">
-            <option value="planToRead">Plan To Read</option>
-            <option value="inProgress">In Progress</option>
-            <option value="completed">Completed</option>
-        </select>
-        <button type="submit" form="newBook" value="Submit">Save</button> <button>Cancel</button>
-    </form>
+    <button onclick="showForm()" class="formPopup">+</button>
+    <div id="formModal">
+        <form action="#" onsubmit="addBookToLibrary();return false" id="newBook">
+            <legend>Add a new book</legend>
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title">
+            <label for="author">Author</label>
+            <input type="text" id="author" name="author">
+            <label for="pages">Number of Pages</label>
+            <input type="number" id="pages" name="pages">
+            <label for="read">Status</label>
+            <select name="read" id="read">
+                <option value="planToRead">Plan To Read</option>
+                <option value="inProgress">In Progress</option>
+                <option value="completed">Completed</option>
+            </select>
+            <button type="submit" form="newBook" value="Submit">Save</button> <button>Cancel</button>
+        </form>
+    </div>
 </body>
 </html>
