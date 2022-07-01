@@ -63,7 +63,3 @@ function addBookToLibrary() {
     renderBook(newBook, index);
 }
 
-function showForm(){
-    const form = document.getElementById('newBook');
-    form.classList.toggle("show");
-}

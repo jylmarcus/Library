@@ -20,10 +20,12 @@
             </div>
         </div>
     </div>
-    <button onclick="showForm()" class="formPopup">+</button>
-    <div id="formModal">
+    <button data-modal-target="#formModal" class="formPopup">+</button>
+    <div class="modal" id="formModal">
+        <div class="modal-header">
+            <h2>Add a new book</h2>
+        </div>
         <form action="#" onsubmit="addBookToLibrary();return false" id="newBook">
-            <legend>Add a new book</legend>
             <label for="title">Title</label>
             <input type="text" id="title" name="title">
             <label for="author">Author</label>
@@ -36,8 +38,12 @@
                 <option value="inProgress">In Progress</option>
                 <option value="completed">Completed</option>
             </select>
-            <button type="submit" form="newBook" value="Submit">Save</button> <button>Cancel</button>
+            <div class="newBookButtons">
+                <button data-close-button>Cancel</button>
+                <button class="submit" type="submit" form="newBook" value="Submit">Save</button> 
+            </div>
         </form>
     </div>
+    <div id="overlay"></div>
 </body>
 </html>
