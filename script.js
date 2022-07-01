@@ -45,6 +45,7 @@ function renderBook(object, index){
             read.innerHTML = "Completed";
             break;
     }
+    book.appendChild(entry);
     book.appendChild(title);
     book.appendChild(author);
     book.appendChild(pages);
@@ -63,3 +64,35 @@ function addBookToLibrary() {
     renderBook(newBook, index);
 }
 
+const openModalButton = document.querySelector('[data-modal-target]')
+const closeModalButton = document.querySelector('[data-close-button]')
+const overlay = document.getElementById('overlay')
+
+overlay.addEventListener('click', () => {
+    const modals = document.querySelectorAll('.modal.active')
+    modals.forEach(modal => {
+        closeModal(modal)
+    })
+})
+
+openModalButton.addEventListener('click',()=> {
+    const modal = document.querySelector(openModalButton.dataset.modalTarget);
+    openModal(modal);
+})
+
+closeModalButton.addEventListener('click',()=> {
+    const modal = closeModalButton.closest('.modal');
+    closeModal(modal);
+})
+
+function openModal(modal){
+    if (modal == null) return;
+    modal.classList.add('active');
+    overlay.classList.add('active');
+}
+
+function closeModal(modal){
+    if (modal == null) return;
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+}
