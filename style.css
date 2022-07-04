@@ -33,7 +33,6 @@ body{
 .library{
     display: grid;
     grid-auto-rows: auto;
-    gap: 1rem;
     flex: 1;
 }
 
@@ -46,8 +45,11 @@ body{
 
 .libraryHeader>p{
     flex: 1;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .libraryHeader>.title, .libraryHeader>.author{
@@ -55,7 +57,7 @@ body{
 }
 
 .libraryHeader>.progress{
-    flex: 2;
+    flex: 3;
 }
 
 .book{
@@ -66,16 +68,19 @@ body{
 
 .book>p{
     flex: 1;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.book>.title, .libraryHeader>.author{
+.book>.title, .book>.author{
     flex: 4;
 }
 
-.book>.progress{
-    flex: 2;
+.book>.read{
+    flex: 3;
 }
 
 .modal{

@@ -23,7 +23,7 @@ function renderBook(object, index){
     const author = document.createElement('p');
     const pages = document.createElement('p');
     const read = document.createElement('p');
-    const library = document.getElementsByClassName('library');
+    const library = document.querySelector('.library');
     book.setAttribute('class', 'book');
     entry.setAttribute('class', 'entry');
     title.setAttribute('class', 'title');
@@ -62,11 +62,13 @@ function addBookToLibrary() {
     myLibrary.push(newBook);
     let index = myLibrary.length;
     renderBook(newBook, index);
+    const modal = closeModalButton.closest('.modal');
+    closeModal(modal);
 }
 
-const openModalButton = document.querySelector('[data-modal-target]')
-const closeModalButton = document.querySelector('[data-close-button]')
-const overlay = document.getElementById('overlay')
+const openModalButton = document.querySelector('[data-modal-target]');
+const closeModalButton = document.querySelector('[data-close-button]');
+const overlay = document.getElementById('overlay');
 
 overlay.addEventListener('click', () => {
     const modals = document.querySelectorAll('.modal.active')
