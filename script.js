@@ -23,6 +23,9 @@ function renderBook(object, index){
     const author = document.createElement('p');
     const pages = document.createElement('p');
     const read = document.createElement('p');
+    const edit = document.createElement('p');
+    const editImg = document.createElement('img');
+    const delImg = document.createElement('img');
     const library = document.querySelector('.library');
     book.setAttribute('class', 'book');
     entry.setAttribute('class', 'entry');
@@ -30,10 +33,13 @@ function renderBook(object, index){
     author.setAttribute('class', 'author');
     pages.setAttribute('class', 'pages');
     read.setAttribute('class', 'read');
+    edit.setAttribute('class', 'edit');
     entry.innerHTML = index;
     title.innerHTML = object.title;
     author.innerHTML = object.author;
     pages.innerHTML = object.pages;
+    editImg.src = "./img/pencil-box.svg";
+    delImg.src = "./img/trash-can.svg";
     switch (object.read){
         case "planToRead":
             read.innerHTML = "Plan To Read";
@@ -45,11 +51,24 @@ function renderBook(object, index){
             read.innerHTML = "Completed";
             break;
     }
+    edit.appendChild(editImg);
+    edit.appendChild(delImg);
     book.appendChild(entry);
     book.appendChild(title);
     book.appendChild(author);
     book.appendChild(pages);
     book.appendChild(read);
+    book.appendChild(edit);
+    book.addEventListener('mouseenter', ()=>{
+        book.classList.add('hover');
+        editImg.src = "./img/pencil-box-outline.svg";
+        delImg.src = "./img/trash-can-outline.svg";
+    })
+    book.addEventListener('mouseleave', () =>{
+        book.classList.remove('hover');
+        editImg.src = "./img/pencil-box.svg";
+        delImg.src = "./img/trash-can.svg";
+    })
     library.appendChild(book);
 }
 

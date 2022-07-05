@@ -53,17 +53,23 @@ body{
 }
 
 .libraryHeader>.title, .libraryHeader>.author{
-    flex: 4;
+    flex: 3;
 }
 
-.libraryHeader>.progress{
-    flex: 3;
+.libraryHeader>.progress, .libraryHeader>.edit{
+    flex: 2;
 }
 
 .book{
     display: flex;
     justify-content: space-between;
-    color: 92,114,138;
+    color: rgb(58, 72, 87);
+    transition: 100ms ease-in-out;
+}
+
+.book.hover{
+    background-color: rgb(255, 81, 0);
+    color: white;
 }
 
 .book>p{
@@ -76,11 +82,22 @@ body{
 }
 
 .book>.title, .book>.author{
-    flex: 4;
+    flex: 3;
 }
 
-.book>.read{
-    flex: 3;
+.book>.read, .book>.edit{
+    flex: 2;
+}
+
+.book .edit{
+    display: flex;
+    opacity:50%;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.book .edit img{
+    cursor: pointer;
 }
 
 .modal{
