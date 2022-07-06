@@ -84,10 +84,12 @@ function renderBook(object, index){
             if (modal == null) return;
             modal.classList.add('active');
             overlay.classList.add('active');
+
             const titleInput = document.querySelector('#editTitle');
             const authorInput = document.querySelector('#editAuthor');
             const pagesInput = document.querySelector('#editPages');
             const readInput = document.querySelector('#editRead');
+            
             titleInput.defaultValue = title.innerHTML;
             authorInput.defaultValue = author.innerHTML;
             pagesInput.defaultValue = pages.innerHTML;
@@ -113,16 +115,21 @@ function addBookToLibrary() {
     author = document.getElementById("author").value;
     pages = document.getElementById("pages").value;
     read = document.getElementById("read").value;
+
     let newBook = new Book(title,author,pages,read);
     myLibrary.push(newBook);
     let index = myLibrary.length;
     renderBook(newBook, index);
-    const modal = closeModalButton.closest('.modal');
+
+    const modal = document.querySelector(".closeNewBook").closest('.modal');
     closeModal(modal);
+
+    const form = document.getElementById('newBook');
+    form.reset();
 }
 
 const openModalButton = document.querySelector('[data-modal-target]');
-const closeModalButton = document.querySelector('[data-close-button]');
+const closeModalButton = document.querySelectorAll('[data-close-button]');
 const overlay = document.getElementById('overlay');
 
 overlay.addEventListener('click', () => {
@@ -137,9 +144,11 @@ openModalButton.addEventListener('click',()=> {
     openModal(modal);
 })
 
-closeModalButton.addEventListener('click',()=> {
-    const modal = closeModalButton.closest('.modal');
-    closeModal(modal);
+closeModalButton.forEach(button => {
+    button.addEventListener('click',()=> {
+        const modal = button.closest('.modal');
+        closeModal(modal);
+    })
 })
 
 function openModal(modal){
