@@ -21,12 +21,12 @@
             </div>
         </div>
     </div>
-    <button data-modal-target="#formModal" class="formPopup">+</button>
+    <button class="addBookButton">+</button>
     <div class="modal" id="formModal">
         <div class="modal-header">
-            <h2>Add a new book</h2>
+            <h2 class="modalHeaderText"></h2>
         </div>
-        <form action="#" onsubmit="addBookToLibrary();return false" id="newBook">
+        <form action="#" onsubmit="onSubmit();return false" id="bookForm" autocomplete="off">
             <label for="title">Title</label>
             <input type="text" id="title" name="title">
             <label for="author">Author</label>
@@ -39,32 +39,9 @@
                 <option value="inProgress">In Progress</option>
                 <option value="completed">Completed</option>
             </select>
-            <div class="newBookButtons">
+            <div class="bookFormActions">
                 <button type = "button" data-close-button class="closeNewBook">Cancel</button>
-                <button class="submit" type="submit" form="newBook" value="Submit">Save</button> 
-            </div>
-        </form>
-    </div>
-    <div class="modal" id="editModal">
-        <div class="modal-header">
-            <h2>Edit a book</h2>
-        </div>
-        <form action="#" onsubmit="editBook();return false" id="editBook">
-            <label for="title">Title</label>
-            <input type="text" id="editTitle" name="title">
-            <label for="author">Author</label>
-            <input type="text" id="editAuthor" name="author">
-            <label for="pages">Number of Pages</label>
-            <input type="number" id="editPages" name="pages">
-            <label for="read">Status</label>
-            <select name="read" id="editRead">
-                <option value="planToRead">Plan To Read</option>
-                <option value="inProgress">In Progress</option>
-                <option value="completed">Completed</option>
-            </select>
-            <div class="editBookButtons">
-                <button type = "button" data-close-button class="closeEditBook">Cancel</button>
-                <button class="submit" type="submit" form="editBook" value="submit">Save</button> 
+                <button class="submit" type="submit" form="bookForm" value="Submit">Save</button> 
             </div>
         </form>
     </div>
