@@ -1,7 +1,8 @@
-let myLibrary = [];
+var myLibrary = [];
 var currentBook = null;
 var currentBookDiv = null;
 var modalHeader = document.querySelector('.modalHeaderText');
+var bookToDelete = null;
 
 function onSubmit() {
     let formData = readFormData();
@@ -38,20 +39,16 @@ function addBookToLibrary(data) {
     let index = myLibrary.length;
     renderBook(data, index);
 
-    const modal = document.querySelector(".modal");
+    const modal = document.querySelector("#formModal");
     closeModal(modal);
 }
 
 function renderLibrary(library){
     let index = 1;
-    for(object in library){
-        renderBook(object, index);
+    library.forEach((book => {
+        renderBook(book, index);
         index++;
-    }
-}
-
-function getBookByIndex(index){
-    return myLibrary[index];
+    }))
 }
 
 function renderBook(data, index){
@@ -118,12 +115,17 @@ function renderBook(data, index){
     })
 
     editImg.addEventListener('click', ()=>{
-        const modal = document.querySelector('.modal');
+        const modal = document.querySelector('#formModal');
         modalHeader.innerHTML = 'Edit book';
         currentBook = myLibrary[index-1];
-        console.log(currentBook);
         currentBookDiv = book;
         openEditModal(modal, currentBook);
+    })
+
+    delImg.addEventListener('click', ()=>{
+        const modal = document.querySelector('#deleteModal');
+        bookToDelete = myLibrary[index-1];
+        openModal(modal);
     })
 
     library.appendChild(book);
@@ -171,13 +173,28 @@ function editBook(data){
     currentBook.pages = data.pages;
     currentBook.read = data.read;
 
-    const modal = document.querySelector(".modal")
+    const modal = document.querySelector("#formModal")
     closeModal(modal);
+}
+
+function deleteBook(){
+    myLibrary.splice(myLibrary.findIndex(book => book.title === bookToDelete.title) , 1);
+    bookToDelete = null;
+
+    const library = document.querySelector('.library');
+    const books = library.getElementsByClassName('book');
+
+    while (books[0]){
+        books[0].parentNode.removeChild(books[0]);
+    }
+
+    renderLibrary(myLibrary);
 }
 
 const addBookButton = document.querySelector('.addBookButton');
 const closeModalButton = document.querySelectorAll('[data-close-button]');
 const overlay = document.getElementById('overlay');
+const deleteBookButton = document.querySelector('#deleteBook');
 
 overlay.addEventListener('click', () => {
     const modals = document.querySelectorAll('.modal.active')
@@ -187,9 +204,15 @@ overlay.addEventListener('click', () => {
 })
 
 addBookButton.addEventListener('click',()=> {
-    const modal = document.querySelector('.modal');
+    const modal = document.querySelector('#formModal');
     modalHeader.innerHTML = 'Add a book';
     openModal(modal);
+})
+
+deleteBookButton.addEventListener('click', ()=>{
+    deleteBook();
+    const modal = deleteBookButton.closest('.modal');
+    closeModal(modal);
 })
 
 closeModalButton.forEach(button => {
