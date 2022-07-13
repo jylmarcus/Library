@@ -232,4 +232,10 @@ function closeModal(modal){
     if (modal == null) return;
     modal.classList.remove('active');
     overlay.classList.remove('active');
+
+    bookToDelete = null;
+    currentBook = null;
+    currentBookDiv = null;
+    const form = document.getElementById('bookForm');
+    form.reset();
 }
