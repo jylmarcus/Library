@@ -26,11 +26,13 @@ function readFormData() {
     return formData;
 }
 
-function Book(data) {
-    this.title = data.title
-    this.author = data.author
-    this.pages = data.pages
-    this.read = data.read
+class Book {
+    constructor(data){
+        this.title = data.title
+        this.author = data.author
+        this.pages = data.pages
+        this.read = data.read
+    }
 }
 
 function addBookToLibrary(data) {
